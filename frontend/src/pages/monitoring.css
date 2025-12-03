@@ -195,3 +195,39 @@ body {
   box-shadow: 0 0 6px #ff4444;
 }
 
+.model-toggle-panel {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.model-btn {
+  background: #003920;
+  border: 1px solid #00aa66;
+  color: #00ffcc;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.model-btn:hover {
+  background: #005c3a;
+  box-shadow: 0 0 6px #00ffcc;
+}
+
+.model-btn.off {
+  background: #392000;
+  border-color: #cc6600;
+  color: #ffcc66;
+}
+
+.model-btn.off:hover {
+  background: #5c3a00;
+  box-shadow: 0 0 6px #ffcc66;
+}
+

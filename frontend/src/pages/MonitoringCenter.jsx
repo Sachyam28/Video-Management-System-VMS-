@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchStreams, fetchResults } from "../api/api";
+import {   fetchStreams, fetchResults,toggleModel,deleteStream,createStream} from "../api/api";
 import "./monitoring.css";
 
 export default function MonitoringCenter() {
@@ -33,12 +33,14 @@ export default function MonitoringCenter() {
       for (const s of streams) {
         const res = await fetchResults(s.id);
         if (res.length > 0) {
-          setResults(prev => ({ ...prev, [s.id]: res[0] }));
+          setResults((prev) => ({ ...prev, [s.id]: res[0] }));
 
           // Add to realtime logs
-          setLogs(prev => [
-            `[${new Date().toLocaleTimeString()}] Stream ${s.name}: ${JSON.stringify(res[0].result_json)}`,
-            ...prev.slice(0, 20)
+          setLogs((prev) => [
+            `[${new Date().toLocaleTimeString()}] Stream ${
+              s.name
+            }: ${JSON.stringify(res[0].result_json)}`,
+            ...prev.slice(0, 20),
           ]);
         }
       }
@@ -46,7 +48,6 @@ export default function MonitoringCenter() {
 
     return () => clearInterval(interval);
   }, [streams]);
-
 
   return (
     <div className="monitor-container">
@@ -95,7 +96,6 @@ export default function MonitoringCenter() {
         </button>
       </div>
 
-
       {/* STREAM CARDS */}
       <div className="monitor-grid">
         {streams.map((s) => {
@@ -104,13 +104,13 @@ export default function MonitoringCenter() {
 
           return (
             <div key={s.id} className={`monitor-card ${alert ? "alert" : ""}`}>
-              
-              {/* HEADER WITH DELETE BUTTON */}
               <div className="monitor-header">
                 <span className="stream-name">{s.name}</span>
-                
+
                 <div className="card-actions">
-                  <span className={`status-dot ${alert ? "blink-red" : "green"}`}></span>
+                  <span
+                    className={`status-dot ${alert ? "blink-red" : "green"}`}
+                  ></span>
 
                   <button
                     className="delete-btn"
@@ -121,7 +121,38 @@ export default function MonitoringCenter() {
                 </div>
               </div>
 
-              {/* BODY */}
+              {/* MODEL TOGGLES */}
+              <div className="model-toggle-panel">
+                <button
+                  className="model-btn"
+                  onClick={() => toggleModel(s.id, "road_detector", true)}
+                >
+                  Enable Road
+                </button>
+
+                <button
+                  className="model-btn off"
+                  onClick={() => toggleModel(s.id, "road_detector", false)}
+                >
+                  Disable Road
+                </button>
+
+                <button
+                  className="model-btn"
+                  onClick={() => toggleModel(s.id, "crack_detector", true)}
+                >
+                  Enable Crack
+                </button>
+
+                <button
+                  className="model-btn off"
+                  onClick={() => toggleModel(s.id, "crack_detector", false)}
+                >
+                  Disable Crack
+                </button>
+              </div>
+
+              {/* Detection panel */}
               <div className="monitor-body">
                 <p className="det-title">Latest Detection</p>
                 <pre className="det-json">
@@ -129,9 +160,7 @@ export default function MonitoringCenter() {
                 </pre>
               </div>
 
-              {/* ALERT BANNER */}
               {alert && <div className="alert-banner">⚠ ALERT DETECTED</div>}
-            
             </div>
           );
         })}
@@ -142,7 +171,9 @@ export default function MonitoringCenter() {
         <h3>Realtime Logs</h3>
         <div className="log-body">
           {logs.map((l, i) => (
-            <div key={i} className="log-line">{l}</div>
+            <div key={i} className="log-line">
+              {l}
+            </div>
           ))}
         </div>
       </div>

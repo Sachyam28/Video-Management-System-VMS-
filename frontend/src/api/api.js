@@ -4,24 +4,38 @@ const API = axios.create({
   baseURL: "http://127.0.0.1:8000",
 });
 
-// Streams
+// -----------------------------
+// STREAMS
+// -----------------------------
+
 export const fetchStreams = () =>
   API.get("/streams").then((res) => res.data);
 
 export const createStream = ({ name, source }) =>
   API.post("/streams", { name, source }).then((res) => res.data);
 
-export async function deleteStream(stream_id) {
-  await fetch(`http://localhost:8000/streams/${stream_id}`, {
-    method: "DELETE",
-  });
-}
+export const deleteStream = (stream_id) =>
+  API.delete(`/streams/${stream_id}`).then((res) => res.data);
 
+// -----------------------------
+// MODELS
+// -----------------------------
 
-// Models
 export const toggleModel = (stream_id, model_name, enabled) =>
-  API.post(`/streams/${stream_id}/models`, { model_name, enabled }).then(res => res.data);
+  API.post(`/streams/${stream_id}/models`, { model_name, enabled }).then(
+    (res) => res.data
+  );
 
-// Inference results
+// -----------------------------
+// RESULTS
+// -----------------------------
+
 export const fetchResults = (stream_id) =>
   API.get(`/streams/${stream_id}/results`).then((res) => res.data);
+
+
+
+export const fetchThumbnail = (stream_id) =>
+  API.get(`/streams/${stream_id}/thumbnail`, {
+    responseType: "blob",
+  });
