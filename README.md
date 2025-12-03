@@ -63,4 +63,32 @@ roadvision/
 │ ├── package.json
 │ └── public/
 
+## 🛠 Setup Instructions
+
+# 1️⃣ Clone the repository
+
+
+## ▶ Backend Setup (FastAPI)
+cd backend
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+
+Backend runs at:
+http://localhost:8000
+
+##💻 Frontend Setup (React)
+cd frontend
+npm install
+npm start
+
+
+Frontend runs at:
+
+http://localhost:3000
+
+##ScreenShots
+
+
 
