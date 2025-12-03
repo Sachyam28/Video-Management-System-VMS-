@@ -63,5 +63,4 @@ roadvision/
 │ ├── package.json
 │ └── public/
 
-## 📂 Project Structure
 
