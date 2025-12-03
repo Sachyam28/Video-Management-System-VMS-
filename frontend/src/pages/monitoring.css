@@ -1,0 +1,197 @@
+body {
+  background: #010b0e;
+  font-family: "Consolas", monospace;
+  color: #00ff9d;
+}
+
+/* Title */
+.monitor-title {
+  text-align: center;
+  color: #00ffcc;
+  margin-top: 20px;
+  font-size: 36px;
+  text-shadow: 0px 0px 8px #00ffcc;
+}
+
+/* Main Grid */
+.monitor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Cards */
+.monitor-card {
+  background: rgba(0, 30, 15, 0.4);
+  border: 1px solid #005533;
+  padding: 12px;
+  border-radius: 8px;
+  position: relative;
+  transition: 0.2s ease;
+}
+
+.monitor-card.alert {
+  border: 2px solid #ff3333;
+  box-shadow: 0px 0px 12px #ff1a1a;
+}
+
+/* Header */
+.monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stream-name {
+  font-size: 18px;
+  color: #00ffa1;
+}
+
+/* Status Dot */
+.status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #00ff66;
+}
+
+.status-dot.green {
+  background: #22ff55;
+  box-shadow: 0 0 6px #22ff55;
+}
+
+.status-dot.blink-red {
+  background: red;
+  animation: blink 0.8s infinite alternate;
+  box-shadow: 0 0 8px red;
+}
+
+@keyframes blink {
+  from { opacity: 1; }
+  to { opacity: 0.2; }
+}
+
+/* Body */
+.det-title {
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #00ffaa;
+}
+
+.det-json {
+  background: #001b12;
+  padding: 8px;
+  border-radius: 4px;
+  color: #00ffaa;
+  font-size: 12px;
+  height: 120px;
+  overflow-y: auto;
+  border: 1px solid #004d33;
+}
+
+/* Alert Banner */
+.alert-banner {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(255, 0, 0, 0.3);
+  border: 1px solid #ff5555;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #ffaaaa;
+  border-radius: 4px;
+}
+
+/* Logs */
+.log-panel {
+  background: #000f0a;
+  border: 1px solid #005533;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 6px;
+  height: 200px;
+  overflow-y: auto;
+}
+
+.log-body {
+  font-size: 12px;
+}
+
+.log-line {
+  margin: 2px 0;
+  color: #22ff88;
+  text-shadow: 0px 0px 4px #22ff88;
+}
+
+/* White Clean Inputs */
+.neon-input {
+  width: 100%;
+  background: #ffffff;               /* White background */
+  border: 1px solid #cccccc;         /* Soft grey border */
+  color: #000000;                    /* Black text */
+  padding: 10px;
+  margin-bottom: 12px;
+  font-family: Arial, sans-serif;    /* Cleaner font for inputs */
+  border-radius: 6px;
+  font-size: 15px;
+  transition: 0.2s ease-in-out;
+}
+
+.neon-input::placeholder {
+  color: #666666;                    /* Light grey placeholder */
+}
+
+.neon-input:focus {
+  border-color: #4c9aff;             /* Blue border on focus */
+  box-shadow: 0 0 6px #4c9aff;        /* Soft glow */
+  outline: none;
+}
+
+/* White Button */
+.neon-button {
+  background: #ffffff;               /* White button */
+  border: 1px solid #cccccc;
+  padding: 10px 16px;
+  color: #000000;                    /* Black text */
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+  transition: 0.2s ease-in-out;
+}
+
+.neon-button:hover {
+  background: #f0f0f0;               /* Light grey on hover */
+  border-color: #4c9aff;
+  box-shadow: 0 0 6px #4c9aff;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #330000;
+  color: #ff6666;
+  border: 1px solid #ff4444;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: monospace;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-btn:hover {
+  background: #550000;
+  box-shadow: 0 0 6px #ff4444;
+}
+
